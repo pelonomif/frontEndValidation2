@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Front End Validation 2</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <style>
+            .require {
+                visibility: hidden;
+                margin: 0.5rem;
+                color: red;
+            }
+    
+            .require-show {
+                visibility:visible;
+                color: red;
+            }
+        </style>
+
+
+
+
+    </head>
+    <body>
+        
+        <h1>Form:</h1>
+        <form>
+            <label for="taskTitle">New Task: </label>
+            <input type="text" class="task"><p id="task-require" class="require">This field cannot contain html characters</p>
+            
+            <br>
+            
+            <label for="taskDesc">Task Description: </label>
+            <input type="text" id="desc" placeholder="Add descriprion here" optional>
+    
+            <br>
+
+            <label for="taskDueDate">Task Due Date: </label>
+            <input type="date" id="date" required><p id="date-require" class="require">Required. Please select a date</p>
+            
+            <br>
+            
+            <label for="taskTime">Task Due Time: </label>
+            <input type="time" id="time" required><p id="time-require" class="require">Required. Please select a time</p>
+            <br>
+            
+
+            <button id="submit">
+                Submit
+            </button>
+
+        </form>
+
+        <div id="display">
+        </div>
+        </body> 
+        <script>
+            let submitBtn = document.getElementById ("submit")
+            
+            submitBtn.onlick = function(e) {
+                e.preventDefault()
+
+                let validated =true;
+
+                let task = document.getElementById("task")
+                let desc = document.getElementById("desc")
+                let date = document.getElementById("date")
+                let time = document.getElementById("time")
+
+                let taskErr = document.getElementById("task-require")
+                let dateErr = document.getElementById("date-require")
+                let timeErr = document.getElementById("time-require")
+
+                if (task.value.includes('<') || taskTitle.value.includes('>')) {
+
+                    taskErr.style.visibility = "visible"
+                    taskErr.style.color="red";
+
+                    validated = false
+                } else {
+                    taskErr.style.visibility = "hidden"
+                }
+                
+
+                if (date.value == "") {
+
+                    taskErr.style.visibility = "visible"
+                    taskErr.style.color="red";
+
+                    validated = false
+                    } else {
+                    taskErr.style.visibility = "hidden"
+                    }
+
+                
+                    if (time.value == "") {
+
+                    taskErr.style.visibility = "visible"
+                    taskErr.style.color="red";
+
+                    validated = false
+                    } else {
+                    taskErr.style.visibility = "hidden"
+                    }
+
+
+
+
+
+            }
+        </script>
+
+
+    
+        
+       
+</html>
